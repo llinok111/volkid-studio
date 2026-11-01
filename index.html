@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VolKid Studio — volume-preserving mesh smoothing</title>
+<style>
+  body { margin: 0; font-family: system-ui, sans-serif; background: #10131a; color: #e6e8ee; }
+  #app { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+  canvas { display: block; }
+  #panel {
+    position: absolute; top: 12px; left: 12px; width: 300px;
+    background: rgba(16,19,26,0.86); border: 1px solid #2a3040; border-radius: 10px;
+    padding: 12px 14px; backdrop-filter: blur(6px); font-size: 13px;
+  }
+  #panel h1 { font-size: 15px; margin: 0 0 8px; color: #9ad0ff; }
+  #panel .row { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
+  #panel input[type=range] { flex: 1; }
+  #panel .mono { font-family: ui-monospace, monospace; font-size: 12px; color: #b6f0c8; }
+  #panel .dim { color: #8892a6; font-size: 11px; }
+  #panel select { background: #1b2130; color: #e6e8ee; border: 1px solid #2a3040; border-radius: 6px; padding: 4px; }
+  #stats { position: absolute; bottom: 12px; left: 12px; font-family: ui-monospace, monospace;
+    font-size: 12px; background: rgba(16,19,26,0.8); padding: 8px 10px; border-radius: 8px; }
+  #hint { position: absolute; bottom: 12px; right: 12px; font-size: 11px; color: #8892a6; }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<div id="app"></div>
+<div id="panel">
+  <h1>VolKid — volume-preserving smooth</h1>
+  <div class="row">
+    <label>Iterations</label>
+    <input type="range" id="iter" min="0" max="300" step="10" value="200" />
+    <span id="iterVal" class="mono">200</span>
+  </div>
+  <div class="row">
+    <label>λ <span class="dim">umbrella</span></label>
+    <input type="range" id="lambda" min="0.1" max="0.9" step="0.05" value="0.5" />
+    <span id="lambdaVal" class="mono">0.50</span>
+  </div>
+  <div class="row">
+    <label>Mode</label>
+    <select id="mode">
+      <option value="preserved" selected>Volume-preserving</option>
+      <option value="naive">Naive (baseline)</option>
+    </select>
+  </div>
+  <div class="row"><label class="dim">Mesh</label><span id="meshMeta" class="mono"></span></div>
+  <div class="dim">Scroll to zoom · drag to orbit · numbers below are recomputed with the <b>same core</b> and verified in node.</div>
+</div>
+<div id="stats"></div>
+<div id="hint">Volume drift shown live from src/core.mjs</div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>

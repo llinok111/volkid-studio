@@ -35,6 +35,8 @@ samples.sort((a, b) => a - b);
 
 const median = samples[Math.floor(REPS / 2)];
 const min = samples[0];
+const p25 = samples[Math.floor(REPS * 0.25)];
+const p75 = samples[Math.floor(REPS * 0.75)];
 const p95 = samples[Math.ceil(REPS * 0.95) - 1];
 const mean = samples.reduce((a, b) => a + b, 0) / REPS;
 const variance = samples.reduce((a, b) => a + (b - mean) ** 2, 0) / REPS;
@@ -56,6 +58,8 @@ const result = {
   coldStartMs: coldMs,
   minMs: min,
   medianMs: median,
+  p25Ms: p25,
+  p75Ms: p75,
   p95Ms: p95,
   stddevMs: stddev,
   relStddev: relStd,

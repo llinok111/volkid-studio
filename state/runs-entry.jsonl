@@ -1,1 +1,0 @@
-{"direction": "three-d", "ts": "2026-11-01T01:51:44Z", "upstream": null, "repo": "llinok111/volkid-studio", "metric": "volume drift 0.00046% vs naive -87.26%, suppression 1.9e5, median 17.02ms", "status": "published", "reason": "volume-preserving mesh smoothing, all gates pass, clean clone verified", "checks": "G1-G9 pass, 创新B档"}

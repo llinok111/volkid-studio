@@ -1,0 +1,6 @@
+{
+  "upstream": null,
+  "decision": "原创工具，无上游修复可提。体积保持平滑是原创方向，本仓库即交付物；交 0 个上游 PR 是正确答案。",
+  "realistic_input": "bumpy-sphere.json（1617 顶点 / 3072 三角封闭流形网格）",
+  "why_not_already_fixed": "原创工具轮次，不存在三点拒绝理由适用的上游修复"
+}
